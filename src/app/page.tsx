@@ -1,7 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache'
 import Link from 'next/link'
 
-export function Home() {
+export default function Home() {
   noStore()
 
   return (
