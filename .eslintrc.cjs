@@ -1,36 +1,31 @@
-/** @type {import("eslint").Linter.Config} */
+const { resolve } = require("node:path");
+
+const project = resolve(__dirname, "tsconfig.json");
+
 const config = {
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: true,
+  env: {
+    browser: true,
+    node: true,
   },
-  plugins: ["@typescript-eslint"],
+  parserOptions: {
+    project,
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project,
+      },
+    },
+  },
   extends: [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
+    require.resolve("@vercel/style-guide/eslint/browser"),
+    require.resolve("@vercel/style-guide/eslint/react"),
+    require.resolve("@vercel/style-guide/eslint/next"),
+    require.resolve("@vercel/style-guide/eslint/typescript"),
   ],
   rules: {
-    // These opinionated rules are enabled in stylistic-type-checked above.
-    // Feel free to reconfigure them to your own preference.
-    "@typescript-eslint/array-type": "off",
-    "@typescript-eslint/consistent-type-definitions": "off",
-
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      {
-        prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
-    ],
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        checksVoidReturn: { attributes: false },
-      },
-    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "import/no-default-export": "off",
   },
 };
 
