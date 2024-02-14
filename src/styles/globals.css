@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-midnight-ink: #070724;
+}
+
+body {
+  background-color: var(--color-midnight-ink);
+  background-image: url('./../../src/assets/background-stars.svg');
+  background-size: 63rem 53rem;
+}
