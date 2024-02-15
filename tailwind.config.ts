@@ -21,6 +21,8 @@ export default {
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
+        antonio: ['var(--font-antonio)'],
+        spartan: ['var(--font-spartan)'],
       },
     },
   },
