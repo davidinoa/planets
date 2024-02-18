@@ -11,3 +11,20 @@ body {
   background-image: url('./../../src/assets/background-stars.svg');
   background-size: 63rem 53rem;
 }
+
+.content-grid {
+  --padding-inline: 1.5rem;
+  --content-max-width: 86rem;
+  --content-width: calc(100% - var(--padding-inline) * 2);
+  --gutter-width: minmax(var(--padding-inline), 1fr);
+
+  display: grid;
+  grid-template-columns:
+    var(--gutter-width) [content-start]
+    min(var(--content-width), var(--content-max-width))
+    [content-end] var(--gutter-width);
+
+  > * {
+    grid-column: content;
+  }
+}
