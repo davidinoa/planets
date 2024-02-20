@@ -161,4 +161,4 @@ export const PLANETS = [
     radius: '24,622 km',
     temperature: '-201°c',
   },
-]
+] as const
