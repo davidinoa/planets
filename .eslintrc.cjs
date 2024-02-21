@@ -24,9 +24,11 @@ const config = {
     require.resolve('@vercel/style-guide/eslint/typescript'),
   ],
   rules: {
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     'import/no-default-export': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
+    'react/jsx-sort-props': 'off',
   },
 }
 
