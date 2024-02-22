@@ -2,6 +2,7 @@ import '~/styles/globals.css'
 
 import { TRPCReactProvider } from '~/trpc/react'
 import { antonio, spartan } from '~/ui/fonts'
+import Header from '~/ui/navbar'
 
 export const metadata = {
   title: 'Planets',
@@ -16,8 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html className={`${spartan.variable} ${antonio.variable}`} lang="en">
-      <body className="font-spartan">
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className="font-spartan text-white">
+        <TRPCReactProvider>
+          <Header />
+          {children}
+        </TRPCReactProvider>
       </body>
     </html>
   )
