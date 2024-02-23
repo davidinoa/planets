@@ -5,9 +5,10 @@ import { useEffect, useRef } from 'react'
 type Props = {
   children: React.ReactNode
   active: boolean
+  className?: string
 }
 
-export default function FocusTrap({ children, active }: Props) {
+export default function FocusTrap({ children, active, className }: Props) {
   const focusTrapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function FocusTrap({ children, active }: Props) {
   }, [active])
 
   return (
-    <div id="focus-trap" ref={focusTrapRef} tabIndex={-1}>
+    <div id="focus-trap" ref={focusTrapRef} tabIndex={-1} className={className}>
       {children}
     </div>
   )
