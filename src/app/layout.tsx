@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={`${spartan.variable} ${antonio.variable}`} lang="en">
-      <body className="font-spartan text-white">
+      <body className="mt-[4.25rem] font-spartan text-white">
         <TRPCReactProvider>
           <Header />
           {children}

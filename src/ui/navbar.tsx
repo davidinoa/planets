@@ -1,17 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  type MotionStyle,
+} from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { mergeClassNames } from '~/lib/utils'
 import FocusTrap from './focus-trap'
 import MobileMenu from './mobile-menu'
 
+const mobileMenuId = 'mobile-menu'
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const mobileMenuId = 'mobile-menu'
+  const motionStyle = useScrollAnimation()
 
   return (
-    <FocusTrap active={isMenuOpen}>
-      <header className="content-grid">
+    <motion.header
+      style={motionStyle}
+      className="fixed top-0 w-full transition-all duration-300 ease-in-out"
+    >
+      <FocusTrap active={isMenuOpen} className="content-grid">
         <nav className="flex items-center justify-between gap-4 py-4">
           <a
             href="/"
@@ -66,7 +77,24 @@ export default function Navbar() {
         </nav>
         <hr className="full-width | border-white/20" />
         <MobileMenu id={mobileMenuId} isOpen={isMenuOpen} />
-      </header>
-    </FocusTrap>
+      </FocusTrap>
+    </motion.header>
   )
+}
+
+function useScrollAnimation(): MotionStyle {
+  const { scrollY } = useScroll()
+  const y = useMotionValue('0')
+  const animationThreshold = 10
+
+  useEffect(() => {
+    return scrollY.on('change', (current) => {
+      const previous = scrollY.getPrevious() ?? 0
+      const diff = current - previous
+      if (Math.abs(diff) < animationThreshold) return
+      y.set(diff > 0 ? '-100%' : '0')
+    })
+  }, [scrollY, y])
+
+  return { y } as const
 }

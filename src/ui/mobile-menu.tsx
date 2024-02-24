@@ -22,7 +22,7 @@ const planetBgColors = {
 }
 
 export default function MobileMenu({ id, isOpen, className }: MobileMenuProps) {
-  useLockBodyScroll()
+  useLockBodyScroll(isOpen)
 
   return (
     <AnimatePresence>
@@ -79,12 +79,13 @@ export default function MobileMenu({ id, isOpen, className }: MobileMenuProps) {
   )
 }
 
-function useLockBodyScroll() {
+function useLockBodyScroll(isActive: boolean) {
   useLayoutEffect(() => {
+    if (!isActive) return
     const originalStyle = window.getComputedStyle(document.body).overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = originalStyle
     }
-  }, [])
+  }, [isActive])
 }
