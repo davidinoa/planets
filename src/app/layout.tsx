@@ -1,6 +1,6 @@
 import { TRPCReactProvider } from '~/trpc/react'
 import { antonio, spartan } from '~/ui/fonts'
-import Header from '~/ui/navbar'
+import Header from '~/ui/navbar/navbar'
 
 import '~/styles/globals.css'
 
