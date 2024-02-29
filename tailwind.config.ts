@@ -6,14 +6,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        mercury: '#419EBB',
-        venus: '#EDA249',
-        earth: '#6D2ED5',
-        mars: '#D14C32',
-        uranus: '#1EC1A2',
-        neptune: '#2D68F0',
-        saturn: '#CD5120',
-        jupiter: '#D83A34',
+        mercury: 'var(--color-mercury)',
+        venus: 'var(--color-venus)',
+        earth: 'var(--color-earth)',
+        mars: 'var(--color-mars)',
+        uranus: 'var(--color-uranus)',
+        neptune: 'var(--color-neptune)',
+        saturn: 'var(--color-saturn)',
+        jupiter: 'var(--color-jupiter)',
         'midnight-ink': 'var(--color-midnight-ink)',
         'cosmic-slate': '#38384F',
         'lunar-smoke': '#838391',

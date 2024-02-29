@@ -7,6 +7,7 @@ import {
   type MotionStyle,
 } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { PLANETS } from '~/lib/data'
 import { mergeClassNames } from '~/lib/utils'
 import FocusTrap from './focus-trap'
 import MobileMenu from './mobile-menu'
@@ -23,13 +24,44 @@ export default function Navbar() {
       className="fixed top-0 w-full transition-all duration-300 ease-in-out"
     >
       <FocusTrap active={isMenuOpen} className="content-grid">
-        <nav className="flex items-center justify-between gap-4 py-4">
+        <nav className="flex items-center justify-between gap-4 py-4 md:gap-6 md:py-6 md:max-lg:flex-col">
           <a
             href="/"
             className="font-antonio text-[1.75rem] uppercase leading-tight tracking-[-1.05px]"
           >
             The Planets
           </a>
+          <ul className="hidden gap-8 md:flex md:items-center">
+            {PLANETS.map((planet) => (
+              <li key={planet.id}>
+                <motion.a
+                  href={`/${planet.id}`}
+                  initial="idle"
+                  whileHover="hover"
+                  className="relative inline-block text-[0.6875rem] font-bold uppercase leading-[2.15] tracking-[1px]"
+                >
+                  {planet.name}
+                  <svg height="4" width="100%" className="absolute">
+                    <motion.path
+                      d="M0,1 L100,1"
+                      strokeWidth="4"
+                      variants={{
+                        idle: {
+                          pathLength: 0,
+                          transition: { duration: 0.1 },
+                        },
+                        hover: {
+                          pathLength: 1,
+                          transition: { duration: 0.5 },
+                          stroke: `var(--color-${planet.id})`,
+                        },
+                      }}
+                    />
+                  </svg>
+                </motion.a>
+              </li>
+            ))}
+          </ul>
           <button
             type="button"
             aria-label="toggle menu"

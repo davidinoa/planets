@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+html {
   --color-midnight-ink: #070724;
+  --color-mercury: #419ebb;
+  --color-venus: #eda249;
+  --color-earth: #6d2ed5;
+  --color-mars: #d14c32;
+  --color-uranus: #1ec1a2;
+  --color-neptune: #2d68f0;
+  --color-saturn: #cd5120;
+  --color-jupiter: #d83a34;
 }
 
 body {

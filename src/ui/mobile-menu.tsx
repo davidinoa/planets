@@ -51,7 +51,7 @@ export default function MobileMenu({ id, isOpen, className }: MobileMenuProps) {
             },
           }}
           className={mergeClassNames(
-            'content-grid full-width w-full auto-rows-max divide-y divide-white/10 overflow-auto bg-midnight-ink uppercase text-white',
+            'content-grid full-width w-full auto-rows-max divide-y divide-white/10 overflow-auto bg-midnight-ink uppercase text-white md:hidden',
             className,
           )}
         >
